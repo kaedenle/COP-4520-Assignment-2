@@ -3,7 +3,7 @@ import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
-class Guest2 implements Runnable{
+class Guest3 implements Runnable{
 	//private static final Object lock = new Object();
 	private int ID;
 	public static int N;
@@ -11,7 +11,7 @@ class Guest2 implements Runnable{
 	public static AtomicInteger num_fin = new AtomicInteger(0);
 	public static AtomicBoolean sign = new AtomicBoolean(true);
 	
-	public Guest2(int ID) {
+	public Guest3(int ID) {
 		this.ID = ID;
 	}
 	
@@ -20,7 +20,7 @@ class Guest2 implements Runnable{
 		while(N != num_fin.get()) {
 			int value;
 			do {
-				value = new Random().nextInt(50);
+				value = new Random().nextInt(5);
 			}while(value != 1);
 			//System.out.println("Guest " + ID + " has looked at the sign!");
 			boolean status = sign.getAndSet(false);
@@ -33,7 +33,7 @@ class Guest2 implements Runnable{
 				sign.set(true);
 			}
 			else {
-				System.out.println("Guest " + ID + " was turned away!");
+				//System.out.println("Guest " + ID + " was turned away!");
 			}
 		}
 	}
@@ -57,17 +57,17 @@ public class GlassVase {
 		
 		
 		Thread[] tList = new Thread[N];
-		Guest2[] gList = new Guest2[N];
-		Guest2.N = N;
+		Guest3[] gList = new Guest3[N];
+		Guest3.N = N;
 		//Guest2.notify.set(new Random().nextInt(N));
 		
 		//there's at least 1 thread
-		gList[0] = new Guest2(0);
+		gList[0] = new Guest3(0);
 		tList[0] = new Thread(gList[0]);
 		
 		//setup all the threads
 		for(int i = 1; i < N; i++) {
-			gList[i] = new Guest2(i);
+			gList[i] = new Guest3(i);
 			tList[i] = new Thread(gList[i]);
 		}
 		
@@ -86,13 +86,13 @@ public class GlassVase {
         }
         
         //Guest2.queue.printQueue();
-        /*for(int i = 0; i < N; i++) {
-        	System.out.println(gList[i].visited);
-        }*/
+        for(int i = 0; i < N; i++) {
+        	System.out.println("Guest " + i + " " + gList[i].visited);
+        }
         s.close();
 		long endTime = System.nanoTime();
         double totalTime = (endTime - startTime);
-        String timeOutput = (totalTime/1000000 + " ms");
+        String timeOutput = (totalTime/1000000000 + " s");
         System.out.println(timeOutput);
 		
 	}

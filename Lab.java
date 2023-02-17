@@ -29,8 +29,6 @@ class Guest implements Runnable{
 				//System.out.println(guestValue.get() + " is up! ");
 				while(guestValue.get() != ID) {
 					if(finished.get()) {
-						if(counter)
-							System.out.println("FINISHED!");
 						return;
 					}
 					//System.out.println(Thread.currentThread().getName() + " is locked");
@@ -65,6 +63,11 @@ class Guest implements Runnable{
 				guestValue.set(new Random().nextInt(N));
 				lock.notifyAll();
 			}
+		}
+		if(finished.get()) {
+			if(counter)
+				System.out.println("COUNTER REPORTS EVERYONE HAS VISITED!");
+			return;
 		}
 	}
 }
