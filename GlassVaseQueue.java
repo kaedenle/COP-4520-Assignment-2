@@ -54,15 +54,23 @@ class Guest2 implements Runnable{
 	
 	@Override
 	public void run() {
+        synchronized(this){
+            if(move.get() == -1)
+                move.set(ID);
+        }
+        
 		while(N > num_fin.get()) {
 			
 			//randomly pick
-			try {
-				Thread.sleep(new Random().nextInt(10));
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} 
+            if(move.get() != ID){
+                try {
+                    Thread.sleep(new Random().nextInt(10));
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                } 
+            }
+			
 			queue.enq(this);
 			
 			//this is the equivalent to being in the room
@@ -71,25 +79,25 @@ class Guest2 implements Runnable{
 				//if room is vacant go in
 				if(move.get() == -1) {
 					move.set(ID);
-					//System.out.println(ID + " took vacancy");
+					System.out.println(ID + " took vacancy");
 					queue.deq();
 				}
 				//if not your ID and room wasn't vacant 
 				if(move.get() != ID)
 					continue;
-				//else
-					//System.out.println(ID + " entered the room");
+				else
+					System.out.println(ID + " entered the room");
 				if(!visited) {
 					visited = true;
 					num_fin.incrementAndGet();
 				}
 				Guest2 next = queue.deq();
 				if(next != null) {
-					//System.out.println(ID + " poked " + next.ID + " " + num_fin.get());
+					System.out.println(ID + " poked " + next.ID + " " + num_fin.get());
 					move.set(next.ID);
 				}
 				else {
-					//System.out.println(ID + " left the room empty " + num_fin.get());
+					System.out.println(ID + " left the room empty " + num_fin.get());
 					move.set(-1);
 				}
 			}
