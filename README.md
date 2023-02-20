@@ -32,7 +32,7 @@ For both GlassVaseQueue.java and Lab.java run javac [Program Name].java to compi
   - Mean: 1.613 s
   - SD: 0.26
   - 
-    ![image](https://user-images.githubusercontent.com/105519245/220182217-844a3fa2-3045-43b0-b643-31bc2d177ca1.png)
+   ![image](https://user-images.githubusercontent.com/105519245/220182217-844a3fa2-3045-43b0-b643-31bc2d177ca1.png)
 - N = 100:
   - Mean: 2.831 s
   - SD: 0.29
