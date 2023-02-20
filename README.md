@@ -1,10 +1,10 @@
 # COP-4520-Assignment-2
 ## RUNNING
-For both GlassVaseQueue.java and Lab.java run javac [Program Name].java to compile it. In the same directory run java [Program Name]. Both programs will ask for how many guests, the range is 0 < N <= 100. The output will show what guests visited the cake/vase.
+- For both GlassVaseQueue.java and Lab.java run javac [Program Name].java to compile it. In the same directory run java [Program Name]. Both programs will ask for how many guests, the range is 0 < N <= 100.
+- Both programs wil then ask how many runs you want to do. This is to help resolve the random nature of both programs by producing enough test data to produce the mean, stdev, and bell curve.
 
 ## OUTPUT
-- A list of guests that visited the vase/cake
-- Time in seconds
+- Time in milliseconds
 
 ## APPROACH LAB.JAVA
 - Different guests would randomly be asked by the Minotaur to go into the maze. 
@@ -23,20 +23,27 @@ For both GlassVaseQueue.java and Lab.java run javac [Program Name].java to compi
 - On average, each guest will enter the maze N times until everyone has eaten a cake.
 
 ## EXPERIMENTAL EVALUATION LAB.JAVA
-- N = 10:
-  - Mean: 1.011 s
-  - SD: 0.42
-  - 
-   ![image](https://user-images.githubusercontent.com/105519245/220181823-c70714e4-7aa0-4bff-81c0-ea7d870e27fa.png)
-- N = 50:
-  - Mean: 1.613 s
-  - SD: 0.26
-  - 
-   ![image](https://user-images.githubusercontent.com/105519245/220182217-844a3fa2-3045-43b0-b643-31bc2d177ca1.png)
-- N = 100:
-  - Mean: 2.831 s
-  - SD: 0.29
+Each N was tested with 100 runs.
+- N = 1:
+  - Mean: 0.13 ms
+  - SD: 0.03
   -  
-   ![image](https://user-images.githubusercontent.com/105519245/220182655-9159298d-6956-4dca-9aef-5835b34ee3bd.png)
+    ![image](https://user-images.githubusercontent.com/105519245/220185984-8e0a8c6e-28c3-434f-b6b8-d9f165cb7cbe.png)
+
+- N = 10:
+  - Mean: 0.5 ms
+  - SD: 0.08
+  - 
+   ![image](https://user-images.githubusercontent.com/105519245/220185279-4102d429-dfeb-450d-bfa1-843e4b538406.png)
+- N = 50:
+  - Mean: 2.53 ms
+  - SD: 0.41
+  - 
+   ![image](https://user-images.githubusercontent.com/105519245/220185615-b77689f5-52c8-4cb6-8573-9863ea8151e9.png)
+- N = 100:
+  - Mean: 4.97 ms
+  - SD: 0.78
+  -  
+   ![image](https://user-images.githubusercontent.com/105519245/220185817-db94bc33-6e8d-48c6-aea6-eb92171df57f.png)
 
 
