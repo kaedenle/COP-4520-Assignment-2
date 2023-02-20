@@ -24,8 +24,19 @@ For both GlassVaseQueue.java and Lab.java run javac [Program Name].java to compi
 
 ## EXPERIMENTAL EVALUATION LAB.JAVA
 - N = 10:
-  - Mean: 1.011
+  - Mean: 1.011 s
   - SD: 0.42
   - 
-   ![image](https://user-images.githubusercontent.com/105519245/220181531-8eea4409-3312-4715-a819-d14b23a79e4b.png)
+   ![image](https://user-images.githubusercontent.com/105519245/220181823-c70714e4-7aa0-4bff-81c0-ea7d870e27fa.png)
+- N = 50:
+  - Mean: 1.613 s
+  - SD: 0.26
+  - 
+    ![image](https://user-images.githubusercontent.com/105519245/220182217-844a3fa2-3045-43b0-b643-31bc2d177ca1.png)
+- N = 100:
+  - Mean: 2.831 s
+  - SD: 0.29
+  -  
+   ![image](https://user-images.githubusercontent.com/105519245/220182655-9159298d-6956-4dca-9aef-5835b34ee3bd.png)
+
 
