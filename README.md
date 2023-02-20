@@ -4,7 +4,8 @@
 - Both programs wil then ask how many runs you want to do. This is to help resolve the random nature of both programs by producing enough test data to produce the mean, stdev, and bell curve.
 
 ## OUTPUT
-- Time in milliseconds
+- Output to file
+- Time in milliseconds M times with M being the number of runs
 
 ## APPROACH LAB.JAVA
 - Different guests would randomly be asked by the Minotaur to go into the maze. 
