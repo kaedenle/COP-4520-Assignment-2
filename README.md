@@ -27,11 +27,13 @@ Each N was tested with 100 runs.
 - N = 1:
   - Mean: 0.13 ms
   - SD: 0.03
+  
     ![image](https://user-images.githubusercontent.com/105519245/220185984-8e0a8c6e-28c3-434f-b6b8-d9f165cb7cbe.png)
     
 - N = 10:
   - Mean: 0.5 ms
   - SD: 0.08
+  
    ![image](https://user-images.githubusercontent.com/105519245/220185279-4102d429-dfeb-450d-bfa1-843e4b538406.png)
 - N = 50:
   - Mean: 2.53 ms
@@ -40,6 +42,7 @@ Each N was tested with 100 runs.
 - N = 100:
   - Mean: 4.97 ms
   - SD: 0.78 
+  
    ![image](https://user-images.githubusercontent.com/105519245/220185817-db94bc33-6e8d-48c6-aea6-eb92171df57f.png)
 
 
