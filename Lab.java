@@ -2,6 +2,10 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.Random;
 import java.util.Scanner;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.io.IOException;
 
 class Guest implements Runnable{
 	private static final Object lock = new Object();
@@ -65,8 +69,8 @@ class Guest implements Runnable{
 			}
 		}
 		if(finished.get()) {
-			if(counter)
-				System.out.println("COUNTER REPORTS EVERYONE HAS VISITED!");
+			//if(counter)
+				//System.out.println("COUNTER REPORTS EVERYONE HAS VISITED!");
 			return;
 		}
 	}
@@ -75,7 +79,7 @@ class Guest implements Runnable{
 public class Lab {
 
 	public static void main(String[] args) {
-		long startTime = System.nanoTime();
+		
 		Random r = new Random();
 		Scanner s = new Scanner(System.in);
 		int upperBound = 100;
@@ -89,53 +93,64 @@ public class Lab {
 			else if(N <= 0)
 				System.out.println("ERROR: value lower than lower bound of 0\n");
 		}
-		
-		int startingValue = r.nextInt(N);
-		//System.out.println("The Starting Value is: " + startingValue);
-		Guest.guestValue.set(startingValue);
-		
-		Guest.N = N;
-		Thread[] tList = new Thread[N];
-		Guest.guestList = new boolean[N];
-		
-		//there's at least 1 thread
-		tList[0] = new Thread(new Guest(true, 0));
-		Guest.guestList[0] = false;
-		
-		//setup all the threads
-		for(int i = 1; i < N; i++) {
-			tList[i] = new Thread(new Guest(false, i));
-			Guest.guestList[i] = false;
-		}
-		
-		
-		//start all threads
-		for(Thread t: tList){
-            t.start();
-        }
+		System.out.println("How many runs: ");
+		long startTime = System.nanoTime();
+		int runs = s.nextInt();
+		String output = "";
+		Path fileName = Path.of(Paths.get("").toAbsolutePath().toString() + "/lab.txt");
 
-        //Wait till all threads die
-        try{
-            for (Thread thread : tList) {
-                thread.join();
-            }
-        }
-        catch (InterruptedException e){
-            System.out.println(e);
-        }
-        for(int i = 0; i < N; i++) {
-        	String buffer = "";
-        	if(i < 10)
-        		buffer = " ";
-        	System.out.print("Guest " + i + " " + Guest.guestList[i] + buffer +" | ");
-        	if(i % 5 == 4)
-        		System.out.println();
-        }
-        
-        s.close();
-		long endTime = System.nanoTime();
-        double totalTime = (endTime - startTime);
-        String timeOutput = (totalTime/1000000000 + " s");
-        System.out.println(timeOutput);
+		for(int k = 0; k <= runs; k++){
+			startTime = System.nanoTime();
+			int startingValue = r.nextInt(N);
+			//System.out.println("The Starting Value is: " + startingValue);
+			Guest.guestValue.set(startingValue);
+			
+			Guest.N = N;
+			Thread[] tList = new Thread[N];
+			Guest.guestList = new boolean[N];
+			
+			//there's at least 1 thread
+			tList[0] = new Thread(new Guest(true, 0));
+			Guest.guestList[0] = false;
+			
+			//setup all the threads
+			for(int i = 1; i < N; i++) {
+				tList[i] = new Thread(new Guest(false, i));
+				Guest.guestList[i] = false;
+			}
+			
+			//start all threads
+			for(Thread t: tList){
+				t.start();
+			}
+
+			//Wait till all threads die
+			try{
+				for (Thread thread : tList) {
+					thread.join();
+				}
+			}
+			catch (InterruptedException e){
+				System.out.println(e);
+			}
+			
+			s.close();
+			long endTime = System.nanoTime();
+			
+			double totalTime = (endTime - startTime);
+			double timeOutput = (totalTime/1000000);
+			//first value bugged
+			if(k == 0)
+				continue;
+			System.out.println(timeOutput + " ms");
+			
+			output += timeOutput + "ms\n";
+		}
+		try {
+			Files.writeString(fileName, ("N: " + N + "\n" + output));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
