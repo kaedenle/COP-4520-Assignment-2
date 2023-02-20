@@ -123,14 +123,19 @@ public class Lab {
         catch (InterruptedException e){
             System.out.println(e);
         }
-        for (int i = 0; i < Guest.guestList.length; i++) {
-        	System.out.println(i + ": " + Guest.guestList[i]);
+        for(int i = 0; i < N; i++) {
+        	String buffer = "";
+        	if(i < 10)
+        		buffer = " ";
+        	System.out.print("Guest " + i + " " + Guest.guestList[i] + buffer +" | ");
+        	if(i % 5 == 4)
+        		System.out.println();
         }
         
         s.close();
 		long endTime = System.nanoTime();
         double totalTime = (endTime - startTime);
-        String timeOutput = (totalTime/1000000 + " ms");
+        String timeOutput = (totalTime/1000000000 + " s");
         System.out.println(timeOutput);
 	}
 }
