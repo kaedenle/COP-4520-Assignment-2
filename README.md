@@ -87,3 +87,17 @@ Each N was tested with 100 runs.
 - If the queue had someone in it they'd set the ID of the room to the person next in the queue. If there was no one in the queue at the moment they'd set the room as empty.
 
 ## CORRECTNESS GLASSVASEQUEUE.JAVA
+- Once a given guest queues they can guarentee that they'll visit the vase once everyone in front of them has gone.
+- The synchronized block locks everyone but one guest. That guest is free to check if it's their turn at that moment. If it isn't the variables of the room remain unchanged unless the room is empty.
+- The only way the room becomes empty at this point is if the queue was initially empty at the time the person that was last in the room check it.
+- This guarentee of the room remaining unchanged (unless the one condition was met) makes the queue work.
+- The insert and pop operations of the array are implemented with synchronized block, ensuring only one thread is inserting themselves or popping someone one at a time.
+
+## EFFICIENCY GLASSVASEQUEUE.JAVA
+- Implementing the queue in a circular array optimizies the guests going in and out of the queue.
+- It makes it so that the array doesn't have to be reconfigured everytime something is inserted or popped.
+
+## EXPERIMENTAL EVALUATION GLASSVASEQUEUE.JAVA
+Each N was tested with 100 runs.
+- N: 1
+  -
