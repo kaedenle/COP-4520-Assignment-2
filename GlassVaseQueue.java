@@ -130,7 +130,7 @@ public class GlassVaseQueue {
 		//Write to file
         Path fileName = Path.of(Paths.get("").toAbsolutePath().toString() + "/glassvase.txt");
 		String output = "";
-		for(int k = 0; k < runs; k++){
+		for(int k = 0; k <= runs; k++){
 			long startTime = System.nanoTime();
 			Thread[] tList = new Thread[N];
 			Guest2[] gList = new Guest2[N];
@@ -163,10 +163,11 @@ public class GlassVaseQueue {
 			
 			double totalTime = (endTime - startTime);
 			double timeOutput = (totalTime/1000000);
-			System.out.println(timeOutput + " ms");
+			
 			//first value bugged
 			if(k == 0)
 				continue;
+			System.out.println(timeOutput + " ms");
 			// Writing into the file
 			output += timeOutput + "ms\n";
 		}
