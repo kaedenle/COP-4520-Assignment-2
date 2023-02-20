@@ -100,4 +100,26 @@ Each N was tested with 100 runs.
 ## EXPERIMENTAL EVALUATION GLASSVASEQUEUE.JAVA
 Each N was tested with 100 runs.
 - N: 1
-  -
+  - Mean: 0.21 ms
+  - SD: 0.09
+  
+    ![image](https://user-images.githubusercontent.com/105519245/220193803-647c60b2-f853-4aa4-a3d8-a36a99b1f482.png)
+    
+- N: 10
+  - Mean: 0.82 ms
+  - SD: 0.44
+    
+    ![image](https://user-images.githubusercontent.com/105519245/220194256-8338d360-24f3-4209-b21c-d45c1f1ba2bf.png)
+
+- N: 50
+  - Mean: 3.52 ms
+  - SD: 0.5
+
+    ![image](https://user-images.githubusercontent.com/105519245/220194704-af5522d2-193b-49dc-8d3c-9a20bb37039c.png)
+    
+- N: 100
+  - Mean: 6.95 ms
+  - SD: 0.51
+
+    ![image](https://user-images.githubusercontent.com/105519245/220194932-178c40ae-35c4-41dc-8899-4587306a17f5.png)
+
