@@ -35,10 +35,13 @@ Each N was tested with 100 runs.
   - SD: 0.08
   
    ![image](https://user-images.githubusercontent.com/105519245/220185279-4102d429-dfeb-450d-bfa1-843e4b538406.png)
+   
 - N = 50:
   - Mean: 2.53 ms
   - SD: 0.41
+  
    ![image](https://user-images.githubusercontent.com/105519245/220185615-b77689f5-52c8-4cb6-8573-9863ea8151e9.png)
+   
 - N = 100:
   - Mean: 4.97 ms
   - SD: 0.78 
