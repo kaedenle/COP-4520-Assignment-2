@@ -75,6 +75,12 @@ Each N was tested with 100 runs.
 - Can't do other stuff, like roaming around the castle, while waiting. They are forced to wait, causing problems with waiting.
 - Some guests will visit multiple times before others visit even once.
 
+## Why 3 is correct and the other 2 suck (why I picked 3)
+- Number 3 guarentees every guest gets the visit the vase in a reasonable amount of time
+- Number 1 and 2 introduces the possibillity for a given guest to starve. One guest can hog the room and keep out other guests, leading to larger runtimes if someone gets unlucky
+- Number 3 guarentees the program can run in a reasonable amount of time, ending when all guests have visited the vase
+- Although number 3 doesn't allow the threads to do anything else due to forcing them to wait, it speeds up the execution time of every guest visiting the vase
+
 ## APPROACH GLASSVASEQUEUE.JAVA
 - I made each thread sleep for a random amount of time
 - Once they woke up they'd check the room to see if it's empty (value is -1). If it was empty they'd replace the value in the room with their own ID.
